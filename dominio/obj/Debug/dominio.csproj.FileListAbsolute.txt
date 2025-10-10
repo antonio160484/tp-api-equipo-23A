@@ -1,0 +1,6 @@
+C:\Users\Dell\Desktop\ANTONIO\GitHub\PROGRAMACION 3\tp-winform-equipo-23A\TPWinForm_equipo-23A\dominio\bin\Debug\dominio.dll
+C:\Users\Dell\Desktop\ANTONIO\GitHub\PROGRAMACION 3\tp-winform-equipo-23A\TPWinForm_equipo-23A\dominio\bin\Debug\dominio.pdb
+C:\Users\Dell\Desktop\ANTONIO\GitHub\PROGRAMACION 3\tp-winform-equipo-23A\TPWinForm_equipo-23A\dominio\obj\Debug\dominio.csproj.AssemblyReference.cache
+C:\Users\Dell\Desktop\ANTONIO\GitHub\PROGRAMACION 3\tp-winform-equipo-23A\TPWinForm_equipo-23A\dominio\obj\Debug\dominio.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Desktop\ANTONIO\GitHub\PROGRAMACION 3\tp-winform-equipo-23A\TPWinForm_equipo-23A\dominio\obj\Debug\dominio.dll
+C:\Users\Dell\Desktop\ANTONIO\GitHub\PROGRAMACION 3\tp-winform-equipo-23A\TPWinForm_equipo-23A\dominio\obj\Debug\dominio.pdb

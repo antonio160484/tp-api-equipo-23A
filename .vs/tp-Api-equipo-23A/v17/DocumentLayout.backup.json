@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Dell\\Desktop\\ANTONIO\\GitHub\\PROGRAMACION 3\\tp-Api-equipo-23A\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{36C984FB-B6B4-4C6B-9BB5-F4D983E60273}|TPAPI-equipo-23A\\TPAPI-equipo-23A.csproj|c:\\users\\dell\\desktop\\antonio\\github\\programacion 3\\tp-api-equipo-23a\\tpapi-equipo-23a\\controllers\\articulocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36C984FB-B6B4-4C6B-9BB5-F4D983E60273}|TPAPI-equipo-23A\\TPAPI-equipo-23A.csproj|solutionrelative:tpapi-equipo-23a\\controllers\\articulocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ArticuloController.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\Desktop\\ANTONIO\\GitHub\\PROGRAMACION 3\\tp-Api-equipo-23A\\TPAPI-equipo-23A\\Controllers\\ArticuloController.cs",
+              "RelativeDocumentMoniker": "TPAPI-equipo-23A\\Controllers\\ArticuloController.cs",
+              "ToolTip": "C:\\Users\\Dell\\Desktop\\ANTONIO\\GitHub\\PROGRAMACION 3\\tp-Api-equipo-23A\\TPAPI-equipo-23A\\Controllers\\ArticuloController.cs",
+              "RelativeToolTip": "TPAPI-equipo-23A\\Controllers\\ArticuloController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAswBoAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-10T21:15:15.871Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
