@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using dominio;
 using negocio;
+using TPAPI_equipo_23A.Models;
 
 namespace TPAPI_equipo_23A.Controllers 
 { 
@@ -27,18 +28,93 @@ namespace TPAPI_equipo_23A.Controllers
             return lista.Find(x => x.Id == id);
         }
 
-        // POST: api/Articulo
-        public void Post([FromBody]string value)
-        {
-        }
+		// POST: api/Articulo
+		public HttpResponseMessage Post([FromBody] ArticuloDTO dto)
+		{
+			try
+			{
+				if (dto == null)
+					return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Los datos del artículo no pueden ser nulos o están vacíos.");
 
-        // PUT: api/Articulo/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+				MarcaNegocio marcaNegocio = new MarcaNegocio();
+				var marcaExiste = marcaNegocio.listar().Any(m => m.Id == dto.IdMarcaDTO);
+				if (!marcaExiste)
+					return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "La marca con el ID proporcionado no existe.");
 
-        // DELETE: api/Articulo/5
-        public void Delete(int id)
+				CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+				var categoriaExiste = categoriaNegocio.listar().Any(c => c.Id == dto.IdCategoriaDTO);
+				if (!categoriaExiste)
+					return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "La categoría con el ID proporcionado no existe.");
+
+				var articulo = new dominio.Articulo
+				{
+					Codigo = dto.CodigoArticuloDTO,
+					Nombre = dto.NombreArticuloDTO,
+					Descripcion = dto.DescripcionArticuloDTO,
+					Marca = new dominio.Marca { Id = dto.IdMarcaDTO },
+					Categoria = new dominio.Categoria { Id = dto.IdCategoriaDTO },
+					Precio = dto.PrecioArticuloDTO,
+					listaImagenes = new List<dominio.Imagen>()
+				};
+
+				if (!string.IsNullOrWhiteSpace(dto.UrlImagenDTO))
+				{
+					articulo.listaImagenes.Add(new dominio.Imagen { ImagenUrl = dto.UrlImagenDTO });
+				}
+				var negocio = new negocio.ArticuloNegocio();
+				negocio.agregar(articulo);
+
+				return Request.CreateResponse(HttpStatusCode.Created, "Artículo agregado correctamente.");
+
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Ocurrió un error inesperado al intentar agregar el artículo.", ex);
+			}
+		}
+
+		// PUT: api/Articulo/5
+		public HttpResponseMessage Put(int id, [FromBody] ImagenesDTO nuevasImagenes)
+		{
+			try
+			{
+				ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+				var articulo = articuloNegocio.listar().FirstOrDefault(a => a.Id == id);
+
+				if (articulo == null)
+				{
+					return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "El artículo con el ID " + id + " no existe.");
+				}
+
+				if (nuevasImagenes == null || nuevasImagenes.Urls == null || !nuevasImagenes.Urls.Any())
+				{
+					return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "La lista de URLs de imágenes no puede estar vacía.");
+				}
+
+				ImagenNegocio imagenNegocio = new ImagenNegocio();
+				foreach (var url in nuevasImagenes.Urls)
+				{
+					if (!string.IsNullOrWhiteSpace(url))
+					{
+						var nuevaImagen = new dominio.Imagen
+						{
+							IdArticulo = id,
+							ImagenUrl = url
+						};
+						imagenNegocio.agregar(nuevaImagen);
+					}
+				}
+
+				return Request.CreateResponse(HttpStatusCode.OK, "Imágenes agregadas correctamente al artículo " + id);
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Ocurrió un error inesperado al agregar las imágenes.", ex);
+			}
+		}
+
+		// DELETE: api/Articulo/5
+		public void Delete(int id)
         {
         }
     }
