@@ -74,7 +74,7 @@ namespace TPAPI_equipo_23A.Controllers
 		}
 
 		// PUT: api/Articulo/5
-		public HttpResponseMessage Put(int id, [FromBody] ImagenesDTO nuevasImagenes)
+		public HttpResponseMessage patch(int id, [FromBody] ImagenesDTO nuevasImagenes)
 		{
 			try
 			{
@@ -113,9 +113,19 @@ namespace TPAPI_equipo_23A.Controllers
 			}
 		}
 
-		// DELETE: api/Articulo/5
-		public void Delete(int id)
+        // PUT: api/Articulo/5
+        public void Put(int id, [FromBody] Articulo art)
         {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            art.Id = id;
+            negocio.modificar(art);
+        }
+
+        // DELETE: api/Articulo/5
+        public void Delete(int id)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            negocio.eliminar(id);
         }
     }
 }
