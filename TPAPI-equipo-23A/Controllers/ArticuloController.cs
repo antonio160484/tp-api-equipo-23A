@@ -73,8 +73,8 @@ namespace TPAPI_equipo_23A.Controllers
 			}
 		}
 
-		// PUT: api/Articulo/5
-		public HttpResponseMessage patch(int id, [FromBody] ImagenesDTO nuevasImagenes)
+		// Patch: api/Articulo/5
+		public HttpResponseMessage Patch(int id, [FromBody] ImagenesDTO nuevasImagenes)
 		{
 			try
 			{
@@ -96,6 +96,15 @@ namespace TPAPI_equipo_23A.Controllers
 				{
 					if (!string.IsNullOrWhiteSpace(url))
 					{
+						if (!Uri.IsWellFormedUriString(url, UriKind.Absolute))
+						{
+							return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "La URL '" + url + "' no tiene un formato válido.");
+						}
+						if (articulo.listaImagenes.Any(img => img.ImagenUrl.Equals(url, StringComparison.OrdinalIgnoreCase)))
+						{
+							return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "La URL '" + url + "' ya existe para este artículo.");
+						}
+
 						var nuevaImagen = new dominio.Imagen
 						{
 							IdArticulo = id,
@@ -113,8 +122,8 @@ namespace TPAPI_equipo_23A.Controllers
 			}
 		}
 
-        // PUT: api/Articulo/5
-        public void Put(int id, [FromBody] Articulo art)
+		// PUT: api/Articulo/5
+		public void Put(int id, [FromBody] Articulo art)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             art.Id = id;
